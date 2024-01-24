@@ -1,13 +1,13 @@
-package si.um.feri.WiseWallet;
+package si.ris.ww;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WiseWalletApplication {
+public class WwApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WiseWalletApplication.class, args);
+		SpringApplication.run(WwApplication.class, args);
 	}
 
 }
