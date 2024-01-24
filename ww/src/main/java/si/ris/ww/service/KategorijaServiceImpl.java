@@ -22,4 +22,25 @@ public class KategorijaServiceImpl implements KategorijaService{
     public List<Kategorija> getAllKategorija() {
         return kategorijaRepository.findAll();
     }
+
+    // Implementation of findById method
+    @Override
+    public Kategorija findById(Integer id) {
+        return kategorijaRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Kategorija save(Kategorija kategorija) {
+        return kategorijaRepository.save(kategorija);
+    }
+
+    @Override
+    public void delete(int id) {
+        kategorijaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Kategorija> findByStartingLetterAndMinId(String startingLetter, int minId) {
+        return kategorijaRepository.findByImeStartingWithAndKategorijaIDGreaterThan(startingLetter, minId);
+    }
 }
