@@ -3,6 +3,7 @@ package si.ris.ww.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import si.ris.ww.model.Kategorija;
 import si.ris.ww.model.Uporabnik;
 import si.ris.ww.service.UporabnikService;
 
@@ -10,13 +11,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/uporabnik")
+@CrossOrigin
 public class UporabnikController {
 
     @Autowired
     private UporabnikService uporabnikService;
 
     // POST endpoint to create a new Uporabnik
-    @PostMapping
+    @PostMapping("/add")
     public Uporabnik createUporabnik(@RequestBody Uporabnik uporabnik) {
         return uporabnikService.save(uporabnik);
     }
@@ -25,6 +27,11 @@ public class UporabnikController {
     @GetMapping
     public List<Uporabnik> getAllUporabniks() {
         return uporabnikService.findAll();
+    }
+
+    @GetMapping("/getAll")
+    public List<Uporabnik> getAllUporabnik() {
+        return uporabnikService.getAllUporabnik();
     }
 
     // GET endpoint to retrieve a single Uporabnik by ID

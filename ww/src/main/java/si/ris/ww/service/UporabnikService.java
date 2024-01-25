@@ -1,5 +1,6 @@
 package si.ris.ww.service;
 
+import si.ris.ww.model.Kategorija;
 import si.ris.ww.model.Uporabnik;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface UporabnikService {
     List<Uporabnik> findByEmailAndUsernameAndPassword(String email, String username, String password);
 
     List<Uporabnik> findUsersWithMoreThanTwoTransactions();
+    public List<Uporabnik> getAllUporabnik();
+
 
 
 }

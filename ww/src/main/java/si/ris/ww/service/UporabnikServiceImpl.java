@@ -2,6 +2,7 @@ package si.ris.ww.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import si.ris.ww.model.Kategorija;
 import si.ris.ww.model.Uporabnik;
 import si.ris.ww.repository.UporabnikRepository;
 
@@ -47,6 +48,11 @@ public class UporabnikServiceImpl implements UporabnikService{
     @Override
     public List<Uporabnik> findUsersWithMoreThanTwoTransactions() {
         return uporabnikRepository.findUsersWithMoreThanTwoTransactions();
+    }
+
+    @Override
+    public List<Uporabnik> getAllUporabnik() {
+        return uporabnikRepository.findAll();
     }
 
 }

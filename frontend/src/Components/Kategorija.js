@@ -56,7 +56,6 @@ export default function Kategorija() {
       <Paper elevation={3} style={paperStyle}>
         {kategorije.map(kategorija => (
           <Paper elevation={6} style={{ margin: '10px', padding: '15px', textAlign: 'left' }} key={kategorija.id}>
-            Id: {kategorija.id}<br/>
             Ime: {kategorija.ime}
           </Paper>
         ))}
