@@ -1,11 +1,14 @@
 package si.ris.ww.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import si.ris.ww.model.Kategorija;
 import si.ris.ww.service.KategorijaService;
 
+
+import java.net.MalformedURLException;
 import java.util.List;
 
 @RestController
@@ -35,6 +38,29 @@ public class KategorijaController {
         }
         return ResponseEntity.ok(kategorija);
     }
+
+    @Autowired
+    private PdfGenerationService pdfGenerationService;
+
+    @GetMapping("/generatePdf")
+    public ResponseEntity<byte[]> generatePdf() throws MalformedURLException {
+        List<Kategorija> categories = kategorijaService.getAllKategorija(); // Replace with actual service call
+        String imagePath = "https://i.pinimg.com/564x/ef/58/c8/ef58c8edea9a92227e4f743975832957.jpg"; // You need to provide the path to your image
+
+        byte[] pdfContent = pdfGenerationService.generateCategoryPdf(categories, imagePath);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=categories.pdf");
+        headers.add(HttpHeaders.CONTENT_TYPE, "application/pdf");
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(pdfContent);
+    }
+
+
+
+
     // PUT endpoint to update a Kategorija record
     @PutMapping("/{id}")
     public ResponseEntity<Kategorija> updateKategorija(@PathVariable("id") int id, @RequestBody Kategorija kategorijaDetails) {
