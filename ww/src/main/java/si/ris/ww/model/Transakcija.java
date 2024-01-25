@@ -1,5 +1,6 @@
 package si.ris.ww.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -22,6 +23,22 @@ public class Transakcija {
     @ManyToOne
     @JoinColumn(name = "kategorija_id", nullable = false)
     private Kategorija kategorija;
+
+    @ManyToOne
+    @JoinColumn(name = "uporabnik_id") // Adjust the column name as per your schema
+    @JsonBackReference
+    private Uporabnik uporabnik;
+
+    // Getters and setters
+
+    public Uporabnik getUporabnik() {
+        return uporabnik;
+    }
+
+    public void setUporabnik(Uporabnik uporabnik) {
+        this.uporabnik = uporabnik;
+    }
+
 
     public Transakcija() {
     }

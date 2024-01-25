@@ -9,7 +9,7 @@ import si.ris.ww.service.UporabnikService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/transakcija")
+@RequestMapping("/uporabnik")
 public class UporabnikController {
 
     @Autowired

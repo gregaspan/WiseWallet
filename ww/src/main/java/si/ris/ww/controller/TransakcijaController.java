@@ -16,7 +16,7 @@ public class TransakcijaController {
     private TransakcijaService transakcijaService;
 
     // GET endpoint to retrieve all Transakcijas
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Transakcija> getAllTransakcijas() {
         return transakcijaService.findAll();
     }

@@ -1,5 +1,6 @@
 package si.ris.ww.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -23,6 +24,7 @@ public class Uporabnik {
     private String password;
 
     @OneToMany(mappedBy = "uporabnik")
+    @JsonManagedReference
     private List<Transakcija> transakcijas;
 
     public Uporabnik() {
