@@ -1,6 +1,7 @@
 package si.ris.ww.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import si.ris.ww.model.Kategorija;
 import si.ris.ww.model.Transakcija;

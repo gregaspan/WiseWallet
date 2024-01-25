@@ -12,6 +12,7 @@ public interface UporabnikService {
     List<Uporabnik> findByEmailAndUsernameAndUporabnikIDGreaterThan(String email, String username, int minId);
     List<Uporabnik> findByEmailAndUsernameAndPassword(String email, String username, String password);
 
+    List<Uporabnik> findUsersWithMoreThanTwoTransactions();
 
 
 }

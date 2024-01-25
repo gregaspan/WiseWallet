@@ -83,4 +83,10 @@ public class UporabnikController {
         return uporabnikService.findByEmailAndUsernameAndPassword(email, username, password);
     }
 
+    // Endpoint to get users with more than two transactions
+    @GetMapping("/users-with-more-than-two-transactions")
+    public List<Uporabnik> getUsersWithMoreThanTwoTransactions() {
+        return uporabnikService.findUsersWithMoreThanTwoTransactions();
+    }
+
 }

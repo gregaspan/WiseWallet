@@ -44,5 +44,9 @@ public class UporabnikServiceImpl implements UporabnikService{
     public List<Uporabnik> findByEmailAndUsernameAndPassword(String email, String username, String password) {
         return uporabnikRepository.findByEmailAndUsernameAndPassword(email, username, password);
     }
+    @Override
+    public List<Uporabnik> findUsersWithMoreThanTwoTransactions() {
+        return uporabnikRepository.findUsersWithMoreThanTwoTransactions();
+    }
 
 }
