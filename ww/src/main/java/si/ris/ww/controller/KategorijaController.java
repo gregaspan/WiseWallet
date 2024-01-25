@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/kategorija")
+@CrossOrigin
 public class KategorijaController {
     @Autowired
     private KategorijaService kategorijaService;

@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import Appbar from './Components/Appbar';
+import Kategorija from './Components/Kategorija';
 
 function App() {
   return (
     <div className="App">
+      <Appbar />
+      <Kategorija />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
