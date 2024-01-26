@@ -11,6 +11,11 @@ public interface KategorijaService {
     Kategorija save(Kategorija kategorija);
     void delete(int id);
     List<Kategorija> findByStartingLetterAndMinId(String startingLetter, int minId);
+    void deleteById(int id);
+    boolean deleteByName(String ime);
+    Kategorija findByIme(String ime);
+
+
 
 
 }

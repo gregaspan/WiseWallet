@@ -10,7 +10,6 @@ public interface TransakcijaService {
     List<Transakcija> findAll();
     void delete(int id);
 
-    // Complex query method
     List<Transakcija> findByTransakcijaIDGreaterThanAndOpisStartingWith(int minId, String opisStart);
 
 

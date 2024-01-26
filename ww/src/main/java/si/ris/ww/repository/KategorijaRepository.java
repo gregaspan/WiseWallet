@@ -9,4 +9,8 @@ import java.util.List; // Add this import statement
 public interface KategorijaRepository extends JpaRepository<Kategorija,Integer> {
     List<Kategorija> findByImeStartingWithAndKategorijaIDGreaterThan(String ime, int kategorijaID);
 
+    Kategorija findByIme(String ime);
+
+
+
 }

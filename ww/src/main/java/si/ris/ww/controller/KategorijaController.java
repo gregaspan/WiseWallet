@@ -29,7 +29,6 @@ public class KategorijaController {
         return kategorijaService.getAllKategorija();
     }
 
-    // GET endpoint to retrieve a Kategorija by its ID
     @GetMapping("/{id}")
     public ResponseEntity<Kategorija> getKategorijaById(@PathVariable("id") Integer id) {
         Kategorija kategorija = kategorijaService.findById(id);
@@ -61,7 +60,6 @@ public class KategorijaController {
 
 
 
-    // PUT endpoint to update a Kategorija record
     @PutMapping("/{id}")
     public ResponseEntity<Kategorija> updateKategorija(@PathVariable("id") int id, @RequestBody Kategorija kategorijaDetails) {
         Kategorija kategorija = kategorijaService.findById(id);
@@ -84,7 +82,7 @@ public class KategorijaController {
             return ResponseEntity.notFound().build();
         }
 
-        kategorijaService.delete(id);
+        kategorijaService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
@@ -96,6 +94,27 @@ public class KategorijaController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(kategorijas);
+    }
+
+    @DeleteMapping("/deleteByName/{ime}")
+    public ResponseEntity<Void> deleteKategorijaByName(@PathVariable("ime") String ime) {
+        boolean isDeleted = kategorijaService.deleteByName(ime);
+        if (!isDeleted) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/updateByName/{oldName}")
+    public ResponseEntity<Kategorija> updateKategorijaByName(@PathVariable String oldName, @RequestBody Kategorija kategorijaDetails) {
+        Kategorija existingKategorija = kategorijaService.findByIme(oldName);
+        if (existingKategorija == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        existingKategorija.setIme(kategorijaDetails.getIme());
+        final Kategorija updatedKategorija = kategorijaService.save(existingKategorija);
+        return ResponseEntity.ok(updatedKategorija);
     }
 
 

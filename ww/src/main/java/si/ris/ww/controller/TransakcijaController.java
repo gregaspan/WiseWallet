@@ -15,13 +15,11 @@ public class TransakcijaController {
     @Autowired
     private TransakcijaService transakcijaService;
 
-    // GET endpoint to retrieve all Transakcijas
     @GetMapping("/getAll")
     public List<Transakcija> getAllTransakcijas() {
         return transakcijaService.findAll();
     }
 
-    // GET endpoint to retrieve a Transakcija by ID
     @GetMapping("/{id}")
     public ResponseEntity<Transakcija> getTransakcijaById(@PathVariable("id") int id) {
         Transakcija transakcija = transakcijaService.findById(id);
@@ -31,13 +29,11 @@ public class TransakcijaController {
         return ResponseEntity.ok(transakcija);
     }
 
-    // POST endpoint to create a new Transakcija
     @PostMapping
     public Transakcija createTransakcija(@RequestBody Transakcija transakcija) {
         return transakcijaService.save(transakcija);
     }
 
-    // PUT endpoint to update an existing Transakcija
     @PutMapping("/{id}")
     public ResponseEntity<Transakcija> updateTransakcija(@PathVariable("id") int id, @RequestBody Transakcija transakcijaDetails) {
         Transakcija transakcija = transakcijaService.findById(id);
@@ -45,7 +41,6 @@ public class TransakcijaController {
             return ResponseEntity.notFound().build();
         }
 
-        // Update Transakcija fields
         transakcija.setZnesek(transakcijaDetails.getZnesek());
         transakcija.setDatum(transakcijaDetails.getDatum());
         transakcija.setOpis(transakcijaDetails.getOpis());
@@ -55,7 +50,6 @@ public class TransakcijaController {
         return ResponseEntity.ok(updatedTransakcija);
     }
 
-    // DELETE endpoint to delete a Transakcija
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTransakcija(@PathVariable("id") int id) {
         Transakcija transakcija = transakcijaService.findById(id);
@@ -67,7 +61,6 @@ public class TransakcijaController {
         return ResponseEntity.ok().build();
     }
 
-    // GET endpoint for querying Transakcija with specific criteria
     @GetMapping("/search")
     public ResponseEntity<List<Transakcija>> searchTransakcija(@RequestParam(defaultValue = "5") int minId,
                                                                @RequestParam(defaultValue = "A") String opisStart) {

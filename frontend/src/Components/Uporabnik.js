@@ -8,6 +8,7 @@ export default function Uporabnik() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [uporabniki, setUporabniki] = useState([]);
+  const [loginStatus, setLoginStatus] = useState('');
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -19,8 +20,16 @@ export default function Uporabnik() {
       body: JSON.stringify(uporabnik)
     }).then(() => {
       console.log("New Uporabnik added");
-      // Optionally, you can fetch all users again here to update the list
     });
+  };
+
+  const handleLogin = () => {
+    const foundUser = uporabniki.find(user => user.email === email && user.password === password);
+    if (foundUser) {
+      setLoginStatus('Login Uspesen!');
+    } else {
+      setLoginStatus('Napacno uporabnisko ime ali geslo.');
+    }
   };
 
   useEffect(() => {
@@ -65,6 +74,10 @@ export default function Uporabnik() {
           <Button variant="contained" color="secondary" onClick={handleClick}>
             Submit
           </Button>
+          <Button variant="contained" color="primary" onClick={handleLogin}>
+            Login
+          </Button>
+          <p>{loginStatus}</p>
         </form>
       </Paper>
 

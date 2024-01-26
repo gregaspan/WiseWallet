@@ -43,4 +43,26 @@ public class KategorijaServiceImpl implements KategorijaService{
     public List<Kategorija> findByStartingLetterAndMinId(String startingLetter, int minId) {
         return kategorijaRepository.findByImeStartingWithAndKategorijaIDGreaterThan(startingLetter, minId);
     }
+
+    @Override
+    public void deleteById(int id) {
+        kategorijaRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean deleteByName(String ime) {
+        Kategorija kategorija = kategorijaRepository.findByIme(ime);
+        if (kategorija != null) {
+            kategorijaRepository.delete(kategorija);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Kategorija findByIme(String ime) {
+        return kategorijaRepository.findByIme(ime);
+    }
+
+
 }

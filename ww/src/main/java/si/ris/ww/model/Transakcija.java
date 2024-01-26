@@ -25,7 +25,7 @@ public class Transakcija {
     private Kategorija kategorija;
 
     @ManyToOne
-    @JoinColumn(name = "uporabnik_id") // Adjust the column name as per your schema
+    @JoinColumn(name = "uporabnik_id")
     @JsonBackReference
     private Uporabnik uporabnik;
 
